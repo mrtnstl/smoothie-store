@@ -4,7 +4,7 @@ const {
   updateItem,
   deleteItem,
   readItemsEmail,
-} = require("../../crud")
+} = require("../crud")
 const bcrypt = require("bcrypt")
 
 module.exports.signup_get = (req, res) => {
