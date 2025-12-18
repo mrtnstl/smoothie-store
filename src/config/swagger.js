@@ -1,4 +1,5 @@
-const PORT = 3000
+const URL = "http://localhost";
+const PORT = process.env.PORT || 3000;
 
 const swaggerOptions = {
   definition: {
@@ -10,7 +11,7 @@ const swaggerOptions = {
     },
     servers: [
       {
-        url: `http://localhost:${PORT}`,
+        url: `${URL}:${PORT}`,
       },
     ],
     components: {
@@ -24,6 +25,6 @@ const swaggerOptions = {
     },
   },
   apis: ["./src/routes/*.js"],
-}
+};
 
-module.exports.swaggerOptions = swaggerOptions
+module.exports.swaggerOptions = swaggerOptions;

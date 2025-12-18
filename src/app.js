@@ -1,31 +1,44 @@
-const express = require("express")
-const swaggerUi = require("swagger-ui-express")
-const swaggerJSDoc = require("swagger-jsdoc")
-const { swaggerOptions } = require("./config/swagger")
+const express = require("express");
+const swaggerUi = require("swagger-ui-express");
+const swaggerJSDoc = require("swagger-jsdoc");
+const { swaggerOptions } = require("./config/swagger");
 
-const smoothieRoutes = require("./routes/smoothieRoutes")
-const authRoutes = require("./routes/authRoutes")
+const smoothieRoutes = require("./routes/smoothieRoutes");
+const authRoutes = require("./routes/authRoutes");
 
-const app = express()
+const app = express();
+const PORT = process.env.PORT || 3000;
 
-app.use(express.static("public"))
-app.use(express.json())
+app.use(express.static("public"));
+app.use(express.json());
 
-app.set("view engine", "ejs")
+app.set("view engine", "ejs");
 
-const swaggerDocs = swaggerJSDoc(swaggerOptions)
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs))
+const swaggerDocs = swaggerJSDoc(swaggerOptions);
+
+// website routes
+app.use("/api/v1/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 app.get("/", (req, res) => {
-  res.render("home")
-})
-
-app.use(authRoutes)
-app.use("/api/v1", smoothieRoutes)
-
-app.listen(3000, () => {
-  console.log("App started")
-})
-// website routes
+  res.render("home");
+});
 
 // api routes
+app.use(authRoutes);
+app.use("/api/v1", smoothieRoutes);
+
+const server = app.listen(PORT, () => {
+  console.log(`App is listening on port ${PORT}`);
+});
+
+// graceful shutdown logic
+process.on("SIGINT", () => {
+  server.close(() => {
+    console.log("SIGINT signal recieved! Server closed!");
+  });
+});
+process.on("SIGTERM", () => {
+  server.close(() => {
+    console.log("SIGINT signal recieved! Server closed!");
+  });
+});
