@@ -1,0 +1,36 @@
+{
+  "name": "smoothie-store",
+  "version": "1.0.0",
+  "description": "'Smoothie Store' is a webapplication where users can request smoothie recommendations and recipes.\r It is built using the `model-view-controller` architecture but the smoothie requests are served through rest api endpoints.",
+  "main": "app.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "dev": "node app.js",
+    "dev:watch": "node --watch app.js",
+    "start": "node app.js",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "format": "prettier --write .",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "better-sqlite3": "^12.5.0",
+    "ejs": "^3.1.10",
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.2",
+    "eslint": "^9.39.2",
+    "globals": "^16.5.0",
+    "jest": "^30.2.0",
+    "prettier": "^3.7.4",
+    "supertest": "^7.1.4"
+  }
+}
