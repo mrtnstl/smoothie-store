@@ -24,6 +24,8 @@
     "better-sqlite3": "^12.5.0",
     "ejs": "^3.1.10",
     "express": "^5.2.1",
+    "mongodb-memory-server": "^11.0.0",
+    "mongoose": "^9.0.2",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.1"
   },

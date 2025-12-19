@@ -1,29 +1,29 @@
 const Smoothies = require("../__mocks__/Smoothies");
 
-module.exports.getSmoothies = (req, res) => {
-  const smoothies = Smoothies.findMany();
+module.exports.getSmoothies = async (req, res) => {
+  const smoothies = await Smoothies.findMany();
   return res.status(200).json(smoothies);
 };
 
-module.exports.getRandomSmoothie = (req, res) => {
-  const pseudoRandom = String(
-    Math.floor(Math.random() * Smoothies.count() + 1)
-  );
+module.exports.getRandomSmoothie = async (req, res) => {
+  const maxCount = await Smoothies.count();
+  const pseudoRandom = String(Math.floor(Math.random() * maxCount + 1));
+
   const smoothieId = `SM-${pseudoRandom.padStart(3, "0")}`;
 
-  const smoothieOfTheDay = Smoothies.findOne("id", smoothieId);
-  if (!smoothieOfTheDay) {
+  const randomSmoothie = await Smoothies.findOne("id", smoothieId);
+  if (!randomSmoothie) {
     return res
       .status(404)
       .json({ message: `Something went wrong :( Cannot find smoothie` });
   }
 
-  return res.status(200).json(smoothieOfTheDay);
+  return res.status(200).json(randomSmoothie);
 };
 
-module.exports.getSmoothieById = (req, res) => {
+module.exports.getSmoothieById = async (req, res) => {
   const smoothieId = req.params.id;
-  const smoothie = Smoothies.findOne("id", smoothieId);
+  const smoothie = await Smoothies.findOne("id", smoothieId);
 
   if (!smoothie) {
     return res
