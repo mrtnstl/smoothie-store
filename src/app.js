@@ -6,6 +6,7 @@ const Database = require("./services/mongodbMemoryServer");
 
 const smoothieRoutes = require("./routes/smoothieRoutes");
 const authRoutes = require("./routes/authRoutes");
+const { wildcardMW } = require("./middleware/wildcardMW");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -28,6 +29,7 @@ app.get("/", (req, res) => {
 // api routes
 app.use(authRoutes);
 app.use("/api/v1", smoothieRoutes);
+app.use(wildcardMW);
 
 const server = app.listen(PORT, () => {
   console.log(`App is listening on port ${PORT}`);
