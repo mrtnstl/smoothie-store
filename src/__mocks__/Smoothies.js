@@ -1,16 +1,18 @@
 module.exports.count = () => {
-  return Smoothies.length;
+  return new Promise(resolve => {
+    resolve(Smoothies.length);
+  });
 };
 module.exports.findOne = (key, value) => {
-  const smoothie = Smoothies.find((smoothie) => smoothie[key] === value);
-  return smoothie;
+  return new Promise(resolve => {
+    const smoothie = Smoothies.find(smoothie => smoothie[key] === value);
+    resolve(smoothie);
+  });
 };
-module.exports.findMany = (key, value) => {
-  if (typeof key === "undefined" || typeof value === "undefined") {
-    return Smoothies;
-  }
-  const smoothies = Smoothies.find((smoothie) => smoothie[key] === value);
-  return smoothies;
+module.exports.findMany = () => {
+  return new Promise(resolve => {
+    resolve(Smoothies);
+  });
 };
 
 const Smoothies = [
