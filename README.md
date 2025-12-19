@@ -9,4 +9,4 @@ It is built using `model-view-controller` architecture and smoothie requests are
 
 | Frontend              | Backend         | Database |
 | --------------------- | --------------- | -------- |
-| HTML + CSS + JS (SSR) | Nodejs, Express | SQLite   |
+| HTML + CSS + JS (SSR) | Nodejs, Express | MongoDB  |
