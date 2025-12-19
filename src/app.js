@@ -9,12 +9,12 @@ const authRoutes = require("./routes/authRoutes");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+const swaggerDocs = swaggerJSDoc(swaggerOptions);
+
 app.use(express.static("public"));
 app.use(express.json());
 
 app.set("view engine", "ejs");
-
-const swaggerDocs = swaggerJSDoc(swaggerOptions);
 
 // website routes
 app.use("/api/v1/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
