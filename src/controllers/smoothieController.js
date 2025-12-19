@@ -1,4 +1,5 @@
 const Smoothies = require("../__mocks__/Smoothies");
+const Smoothie = require("../models/Smoothie");
 
 module.exports.getSmoothies = async (req, res) => {
   const smoothies = await Smoothies.findMany();
@@ -23,7 +24,7 @@ module.exports.getRandomSmoothie = async (req, res) => {
 
 module.exports.getSmoothieById = async (req, res) => {
   const smoothieId = req.params.id;
-  const smoothie = await Smoothies.findOne("id", smoothieId);
+  const smoothie = await Smoothie.findOne({ id: smoothieId });
 
   if (!smoothie) {
     return res

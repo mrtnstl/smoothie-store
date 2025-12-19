@@ -6,7 +6,9 @@ let mongoServer;
 async function connectDB() {
   mongoServer = await MongoMemoryServer.create();
   const mongoUri = mongoServer.getUri();
-  await mongoose.connect(mongoUri);
+  await mongoose.connect(mongoUri, {
+    dbName: "SmoothiesDB",
+  });
   console.log("Connect to mongodb memory server");
 }
 

@@ -1,0 +1,538 @@
+{
+  "smoothies": [
+    {
+      "id": "SM-001",
+      "name": "Mango Madness",
+      "description": "A bright, tropical blend with creamy mango and a hint of citrus.",
+      "ingredients": [
+        "mango",
+        "banana",
+        "orange juice",
+        "Greek yogurt",
+        "honey",
+        "ice"
+      ]
+    },
+    {
+      "id": "SM-002",
+      "name": "Berry Blast",
+      "description": "Antioxidant-rich mix of blueberries, raspberries, and strawberries.",
+      "ingredients": [
+        "strawberries",
+        "blueberries",
+        "raspberries",
+        "almond milk",
+        "chia seeds",
+        "ice"
+      ]
+    },
+    {
+      "id": "SM-003",
+      "name": "Green Glow",
+      "description": "A refreshing green smoothie with spinach and pineapple.",
+      "ingredients": [
+        "spinach",
+        "pineapple",
+        "green apple",
+        "cucumber",
+        "coconut water",
+        "lime juice",
+        "ice"
+      ]
+    },
+    {
+      "id": "SM-004",
+      "name": "Peanut Butter Power",
+      "description": "Protein-packed blend for sustained energy.",
+      "ingredients": [
+        "banana",
+        "peanut butter",
+        "oats",
+        "milk",
+        "vanilla extract",
+        "ice"
+      ]
+    },
+    {
+      "id": "SM-005",
+      "name": "Tropical Sunrise",
+      "description": "Sun-kissed combo of pineapple and passion fruit.",
+      "ingredients": [
+        "pineapple",
+        "passion fruit pulp",
+        "mango",
+        "orange juice",
+        "mint",
+        "ice"
+      ]
+    },
+    {
+      "id": "SM-006",
+      "name": "Chocolate Banana Muscle",
+      "description": "Indulgent chocolate-banana smoothie with extra protein.",
+      "ingredients": [
+        "banana",
+        "cocoa powder",
+        "protein powder",
+        "milk",
+        "dates",
+        "ice"
+      ]
+    },
+    {
+      "id": "SM-007",
+      "name": "Citrus Cooler",
+      "description": "Zesty citrus blend to refresh and hydrate.",
+      "ingredients": ["orange", "grapefruit", "lemon", "honey", "mint", "ice"]
+    },
+    {
+      "id": "SM-008",
+      "name": "Avocado Dream",
+      "description": "Silky avocado base with a tangy twist.",
+      "ingredients": [
+        "avocado",
+        "spinach",
+        "green apple",
+        "lime juice",
+        "coconut water",
+        "ice"
+      ]
+    },
+    {
+      "id": "SM-009",
+      "name": "Carrot Cake Smoothie",
+      "description": "Dessert-inspired with warm spices and natural sweetness.",
+      "ingredients": [
+        "carrot",
+        "banana",
+        "pineapple",
+        "Greek yogurt",
+        "cinnamon",
+        "nutmeg",
+        "honey",
+        "ice"
+      ]
+    },
+    {
+      "id": "SM-010",
+      "name": "Strawberry Fields",
+      "description": "Classic strawberry with creamy vanilla notes.",
+      "ingredients": ["strawberries", "banana", "vanilla yogurt", "milk", "ice"]
+    },
+    {
+      "id": "SM-011",
+      "name": "Apple Pie Smoothie",
+      "description": "Comforting apple-cinnamon profile with oats.",
+      "ingredients": [
+        "apple",
+        "banana",
+        "oats",
+        "cinnamon",
+        "almond milk",
+        "ice"
+      ]
+    },
+    {
+      "id": "SM-012",
+      "name": "Kiwi Lime Refresher",
+      "description": "Tart and bright green kiwi-lime blend.",
+      "ingredients": [
+        "kiwi",
+        "lime juice",
+        "green grapes",
+        "spinach",
+        "coconut water",
+        "ice"
+      ]
+    },
+    {
+      "id": "SM-013",
+      "name": "Blue Moon",
+      "description": "Blueberry-forward with a hint of lavender.",
+      "ingredients": [
+        "blueberries",
+        "banana",
+        "Greek yogurt",
+        "honey",
+        "lavender (pinch)",
+        "ice"
+      ]
+    },
+    {
+      "id": "SM-014",
+      "name": "Pina Colada Lite",
+      "description": "Mocktail-style pineapple and coconut without the booze.",
+      "ingredients": ["pineapple", "coconut milk", "banana", "vanilla", "ice"]
+    },
+    {
+      "id": "SM-015",
+      "name": "Matcha Meadow",
+      "description": "Earthy matcha with creamy banana and spinach.",
+      "ingredients": [
+        "matcha powder",
+        "banana",
+        "spinach",
+        "almond milk",
+        "honey",
+        "ice"
+      ]
+    },
+    {
+      "id": "SM-016",
+      "name": "Raspberry Lemon Zing",
+      "description": "Sharp raspberry-lemon combo with a natural sweetener.",
+      "ingredients": [
+        "raspberries",
+        "lemon juice",
+        "banana",
+        "agave syrup",
+        "water",
+        "ice"
+      ]
+    },
+    {
+      "id": "SM-017",
+      "name": "Pumpkin Spice Protein",
+      "description": "Seasonal pumpkin with spices and protein.",
+      "ingredients": [
+        "pumpkin puree",
+        "banana",
+        "Greek yogurt",
+        "protein powder",
+        "cinnamon",
+        "nutmeg",
+        "almond milk",
+        "ice"
+      ]
+    },
+    {
+      "id": "SM-018",
+      "name": "Cherry Almond Bliss",
+      "description": "Tart cherries balanced with almond and vanilla.",
+      "ingredients": [
+        "dark cherries",
+        "almond milk",
+        "banana",
+        "vanilla extract",
+        "chia seeds",
+        "ice"
+      ]
+    },
+    {
+      "id": "SM-019",
+      "name": "Ginger Peach Cooler",
+      "description": "Juicy peaches with warming ginger and citrus.",
+      "ingredients": ["peach", "banana", "ginger", "orange juice", "ice"]
+    },
+    {
+      "id": "SM-020",
+      "name": "Cucumber Mint Hydrator",
+      "description": "Ultra-refreshing and low-calorie hydration boost.",
+      "ingredients": [
+        "cucumber",
+        "mint",
+        "lime juice",
+        "green apple",
+        "coconut water",
+        "ice"
+      ]
+    },
+    {
+      "id": "SM-021",
+      "name": "Hazelnut Cocoa Shake",
+      "description": "Nutty chocolate delight with a creamy finish.",
+      "ingredients": [
+        "cocoa powder",
+        "hazelnut butter",
+        "banana",
+        "milk",
+        "dates",
+        "ice"
+      ]
+    },
+    {
+      "id": "SM-022",
+      "name": "Orange Creamsicle",
+      "description": "Nostalgic orange-vanilla combo.",
+      "ingredients": ["orange", "vanilla yogurt", "banana", "milk", "ice"]
+    },
+    {
+      "id": "SM-023",
+      "name": "Pear & Spinach Silk",
+      "description": "Gentle sweetness from pear with greens.",
+      "ingredients": [
+        "pear",
+        "spinach",
+        "banana",
+        "almond milk",
+        "honey",
+        "ice"
+      ]
+    },
+    {
+      "id": "SM-024",
+      "name": "Mocha Morning",
+      "description": "Coffee-forward smoothie for a kickstart.",
+      "ingredients": [
+        "cold brew coffee",
+        "banana",
+        "cocoa powder",
+        "milk",
+        "protein powder",
+        "ice"
+      ]
+    },
+    {
+      "id": "SM-025",
+      "name": "Pomegranate Punch",
+      "description": "Bright and tart pomegranate forward.",
+      "ingredients": [
+        "pomegranate juice",
+        "strawberries",
+        "banana",
+        "Greek yogurt",
+        "ice"
+      ]
+    },
+    {
+      "id": "SM-026",
+      "name": "Blackberry Sage",
+      "description": "Herbal twist with deep berry notes.",
+      "ingredients": [
+        "blackberries",
+        "banana",
+        "sage (pinch)",
+        "honey",
+        "water",
+        "ice"
+      ]
+    },
+    {
+      "id": "SM-027",
+      "name": "Vanilla Oat Comfort",
+      "description": "Creamy oat base with vanilla and banana.",
+      "ingredients": [
+        "oats",
+        "banana",
+        "vanilla extract",
+        "milk",
+        "Greek yogurt",
+        "ice"
+      ]
+    },
+    {
+      "id": "SM-028",
+      "name": "Dragon Fruit Spark",
+      "description": "Vibrant magenta with mild sweetness.",
+      "ingredients": [
+        "dragon fruit (pitaya)",
+        "pineapple",
+        "lime juice",
+        "coconut water",
+        "mint",
+        "ice"
+      ]
+    },
+    {
+      "id": "SM-029",
+      "name": "Watermelon Wave",
+      "description": "Ultra-refreshing summer favorite.",
+      "ingredients": ["watermelon", "strawberries", "lime juice", "mint", "ice"]
+    },
+    {
+      "id": "SM-030",
+      "name": "Blueberry Cheesecake Lite",
+      "description": "Dessert-inspired without the guilt.",
+      "ingredients": [
+        "blueberries",
+        "Greek yogurt",
+        "banana",
+        "vanilla",
+        "honey",
+        "milk",
+        "ice"
+      ]
+    },
+    {
+      "id": "SM-031",
+      "name": "Spiced Chai Smoothie",
+      "description": "Warming chai spices with creamy base.",
+      "ingredients": [
+        "chai tea (strong brew)",
+        "banana",
+        "cinnamon",
+        "cardamom",
+        "milk",
+        "honey",
+        "ice"
+      ]
+    },
+    {
+      "id": "SM-032",
+      "name": "Pistachio Pear",
+      "description": "Nutty pistachio meets mellow pear.",
+      "ingredients": [
+        "pear",
+        "pistachios",
+        "banana",
+        "almond milk",
+        "vanilla",
+        "ice"
+      ]
+    },
+    {
+      "id": "SM-033",
+      "name": "Coconut Matcha Cooler",
+      "description": "Green tea depth with tropical coconut.",
+      "ingredients": [
+        "matcha powder",
+        "coconut milk",
+        "pineapple",
+        "banana",
+        "ice"
+      ]
+    },
+    {
+      "id": "SM-034",
+      "name": "Rhubarb Strawberry Tart",
+      "description": "Bright tartness balanced by natural sweetness.",
+      "ingredients": [
+        "rhubarb (cooked)",
+        "strawberries",
+        "banana",
+        "honey",
+        "vanilla yogurt",
+        "ice"
+      ]
+    },
+    {
+      "id": "SM-035",
+      "name": "Grapefruit Mint Spark",
+      "description": "Zesty grapefruit with cooling mint.",
+      "ingredients": ["grapefruit", "orange", "mint", "agave syrup", "ice"]
+    },
+    {
+      "id": "SM-036",
+      "name": "Banana Nutella Swirl",
+      "description": "Dessert-like blend with chocolate hazelnut.",
+      "ingredients": [
+        "banana",
+        "chocolate-hazelnut spread",
+        "milk",
+        "vanilla",
+        "ice"
+      ]
+    },
+    {
+      "id": "SM-037",
+      "name": "Papaya Pine Boost",
+      "description": "Papaya’s silkiness with pineapple’s tang.",
+      "ingredients": [
+        "papaya",
+        "pineapple",
+        "lime juice",
+        "coconut water",
+        "ice"
+      ]
+    },
+    {
+      "id": "SM-038",
+      "name": "Spinach Apple Ginger",
+      "description": "Green and zingy with digestive support.",
+      "ingredients": [
+        "spinach",
+        "green apple",
+        "ginger",
+        "lemon juice",
+        "water",
+        "ice"
+      ]
+    },
+    {
+      "id": "SM-039",
+      "name": "Salted Caramel Protein",
+      "description": "Sweet-salty profile with a protein boost.",
+      "ingredients": [
+        "banana",
+        "dates",
+        "protein powder",
+        "milk",
+        "pinch of sea salt",
+        "ice"
+      ]
+    },
+    {
+      "id": "SM-040",
+      "name": "Mulberry Almond Silk",
+      "description": "Delicate mulberry notes with almond creaminess.",
+      "ingredients": [
+        "mulberries",
+        "banana",
+        "almond milk",
+        "vanilla",
+        "honey",
+        "ice"
+      ]
+    },
+    {
+      "id": "SM-041",
+      "name": "Cranberry Apple Crisp",
+      "description": "Tart cranberries with apple and spice.",
+      "ingredients": [
+        "cranberries",
+        "apple",
+        "banana",
+        "cinnamon",
+        "water",
+        "honey",
+        "ice"
+      ]
+    },
+    {
+      "id": "SM-042",
+      "name": "Fig & Walnut Velvet",
+      "description": "Luxe blend with figs and toasted walnuts.",
+      "ingredients": [
+        "figs",
+        "walnuts",
+        "banana",
+        "Greek yogurt",
+        "milk",
+        "honey",
+        "ice"
+      ]
+    },
+    {
+      "id": "SM-043",
+      "name": "Pineapple Jalapeño Kick",
+      "description": "Sweet heat for adventurous palates.",
+      "ingredients": [
+        "pineapple",
+        "mango",
+        "jalapeño (small, seeded)",
+        "lime juice",
+        "coconut water",
+        "ice"
+      ]
+    },
+    {
+      "id": "SM-044",
+      "name": "Strawberry Basil Breeze",
+      "description": "Fragrant basil elevates classic strawberry.",
+      "ingredients": [
+        "strawberries",
+        "basil",
+        "banana",
+        "lemon juice",
+        "almond milk",
+        "ice"
+      ]
+    },
+    {
+      "id": "SM-045",
+      "name": "Date Tahini Delight",
+      "description": "Middle Eastern-inspired nutty-sweet blend.",
+      "ingredients": ["dates", "tahini", "banana", "cinnamon", "milk", "ice"]
+    }
+  ]
+}

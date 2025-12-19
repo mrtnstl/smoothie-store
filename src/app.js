@@ -5,6 +5,7 @@ const { swaggerOptions } = require("./config/swagger");
 const Database = require("./services/mongodbMemoryServer");
 
 const smoothieRoutes = require("./routes/smoothieRoutes");
+const userRoutes = require("./routes/userRoutes");
 const authRoutes = require("./routes/authRoutes");
 const { wildcardMW } = require("./middleware/wildcardMW");
 
@@ -20,15 +21,19 @@ app.use(express.json());
 app.set("view engine", "ejs");
 
 // website routes
-app.use("/api/v1/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 app.get("/", (req, res) => {
   res.render("home");
 });
 
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+
 // api routes
 app.use(authRoutes);
 app.use("/api/v1", smoothieRoutes);
+app.use("/api/v1", userRoutes);
+
+// catchall
 app.use(wildcardMW);
 
 const server = app.listen(PORT, () => {
