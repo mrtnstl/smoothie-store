@@ -10,3 +10,9 @@ It is built using `model-view-controller` architecture and smoothie requests are
 | Frontend              | Backend         | Database |
 | --------------------- | --------------- | -------- |
 | HTML + CSS + JS (SSR) | Nodejs, Express | MongoDB  |
+
+### Database
+
+Models
+
+![Models](https://github.com/mrtnstl/smoothie-store/blob/main/docs/models.png "Models")
