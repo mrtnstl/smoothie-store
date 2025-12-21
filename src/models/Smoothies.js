@@ -22,7 +22,7 @@ const smoothieSchema = new Schema(
   }
 );
 
-const Smoothie = mongoose.model("Smoothie", smoothieSchema);
+const Smoothies = mongoose.model("Smoothies", smoothieSchema);
 
 (async () => {
   let SMOOTHIE_SEED;
@@ -30,7 +30,7 @@ const Smoothie = mongoose.model("Smoothie", smoothieSchema);
   try {
     SMOOTHIE_SEED = await readFile("./src/data/SMOOTHIE_SEED.json");
     smoothies = JSON.parse(SMOOTHIE_SEED).smoothies;
-    await Smoothie.insertMany(smoothies);
+    await Smoothies.insertMany(smoothies);
   } catch (err) {
     console.log(err);
   } finally {
@@ -39,4 +39,4 @@ const Smoothie = mongoose.model("Smoothie", smoothieSchema);
   }
 })();
 
-module.exports = Smoothie;
+module.exports = Smoothies;
