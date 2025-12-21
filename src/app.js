@@ -11,12 +11,32 @@ app.use(express.json());
 
 app.set("view engine", "ejs");
 
-try {
-  Database.connectDB();
-} catch (err) {
-  console.log(err);
-}
+// connect to database
+(async () => {
+  try {
+    await Database.connectDB();
+  } catch (err) {
+    console.log(err);
+  }
 
+  // INSERT TEST API KEY - DELETE THIS WHEN TESTED!
+  const { genAPIKey } = require("./utils/apiKeyOps");
+  const Keys = require("./models/Keys");
+
+  try {
+    const testKey = await genAPIKey(process.env.API_KEY_SECRET);
+    console.log("TEST API KEY:", testKey);
+
+    await Keys.insertOne({
+      ownerId: "usr-1",
+      key: testKey,
+    });
+  } catch (err) {
+    console.log("ERR DURING TEST KEY GENERATION/INSERTION:", err.message);
+  }
+})();
+
+// subscribe route handlers
 initRoutes(app);
 
 const server = app.listen(PORT, () => {

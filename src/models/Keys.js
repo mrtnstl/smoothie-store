@@ -39,15 +39,4 @@ keySchema.statics.incrementHitCountByKey = async function (apiKey) {
 
 const Keys = mongoose.model("Keys", keySchema);
 
-(async () => {
-  try {
-    await Keys.insertOne({
-      ownerId: "usr-1",
-      key: "my-very-unique-api-key",
-    });
-  } catch (err) {
-    console.log("Mongo hiba:", err.message);
-  }
-})();
-
 module.exports = Keys;

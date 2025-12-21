@@ -5,17 +5,20 @@
  */
 
 const { randomBytes } = require("node:crypto");
-const Keys = require("../models/Keys");
 
-const genAPIKey = async vendorSecret => {
-  // TODO: return Promise!!!
-  if (!vendorSecret) {
-    throw new Error("KeyGen Error! Missing vendor secret!");
-  }
-
-  const key = randomBytes(32).toString("hex");
-  const assembledKey = `${vendorSecret}${key}`;
-  return assembledKey;
+const genAPIKey = vendorSecret => {
+  return new Promise((resolve, reject) => {
+    if (!vendorSecret) {
+      reject("KeyGen Error! Missing vendor secret!");
+    }
+    try {
+      const key = randomBytes(32).toString("hex");
+      const assembledKey = `${vendorSecret}${key}`;
+      resolve(assembledKey);
+    } catch (err) {
+      reject(err.message);
+    }
+  });
 };
 
 const validateAPIKey = async (vendorSecret, apiKey) => {
@@ -26,11 +29,6 @@ const validateAPIKey = async (vendorSecret, apiKey) => {
   //check key length, return err
   if (apiKey.length !== vendorSecret.length + 64) {
     return { err: "Invalid key!", isValid: false };
-  }
-  //check keystore for key, return err or true
-  const isInStore = await Keys.findOne({ apiKey: apiKey });
-  if (!isInStore) {
-    return { err: "Key doesn't exist!", isValid: false };
   }
 
   return { err: null, isValid: true };

@@ -1,5 +1,7 @@
-const Users = require("../models/Users");
 const { randomUUID } = require("node:crypto");
+const Users = require("../models/Users");
+const Keys = require("../models/Keys");
+const { genAPIKey } = require("../utils/apiKeyOps");
 
 module.exports.registerUser = async (req, res) => {
   const { name, email } = req.body || {};
@@ -23,5 +25,21 @@ module.exports.registerUser = async (req, res) => {
   } catch (err) {
     console.log(err);
     return res.status(400).json({ message: err.message });
+  }
+};
+
+module.exports.requestApiKey = async (req, res) => {
+  try {
+    const newApiKey = await genAPIKey(process.env.API_KEY_SECRET);
+    await Keys.insertOne({
+      ownerId: "usr-1",
+      key: newApiKey,
+    });
+    return res
+      .status(201)
+      .json({ message: `Your brand new key: ${newApiKey}` });
+  } catch (err) {
+    // TODO: return generic error message to user
+    return res.status(400).json({ message: `${err.message}` });
   }
 };
