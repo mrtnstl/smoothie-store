@@ -1,4 +1,4 @@
-const User = require("../models/User");
+const Users = require("../models/Users");
 const { randomUUID } = require("node:crypto");
 
 module.exports.registerUser = async (req, res) => {
@@ -15,7 +15,7 @@ module.exports.registerUser = async (req, res) => {
   };
 
   try {
-    const result = await User.insertOne(newUser);
+    const result = await Users.insertOne(newUser);
     console.log(result);
     return res
       .status(201)

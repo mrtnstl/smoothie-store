@@ -1,4 +1,4 @@
-const { genAPIKey } = require("./apiKeyGenerator");
+const { genAPIKey } = require("./apiKeyOps");
 
 describe("API Key generator", () => {
   it("should return a 32 byte hex string with a 'x' byte prefix", () => {

@@ -1,6 +1,7 @@
 const { Router } = require("express");
 const smoothieController = require("../controllers/smoothieController");
-const { authMW } = require("../middleware/authMW");
+const { checkApiKey } = require("../middleware/auth/checkApiKeyMW");
+const { authMW } = require("../middleware/auth/authMW");
 const { requestLimiterMW } = require("../middleware/requestLimiterMW");
 
 const router = Router();
@@ -48,6 +49,7 @@ router.get("/smoothie/random", smoothieController.getRandomSmoothie);
 router.get(
   "/smoothie/:id",
   authMW,
+  checkApiKey,
   requestLimiterMW,
   smoothieController.getSmoothieById
 );

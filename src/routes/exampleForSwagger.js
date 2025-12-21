@@ -60,6 +60,6 @@
  *   securitySchemes:
  *     apiKey:
  *       type: apiKey
- *       name: Authorization
+ *       name: x-api-key
  *       in: header
  */

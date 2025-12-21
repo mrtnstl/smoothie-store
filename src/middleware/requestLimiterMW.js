@@ -1,21 +1,20 @@
 /**
  *  number of req / day limiter
  */
-const User = require("../models/User");
-const MAX_HIT_COUNT = 10;
+const Keys = require("../models/Keys");
+const { REQUEST_LIMIT } = require("../constants/apiConstants");
 
 module.exports.requestLimiterMW = async (req, res, next) => {
-  console.log("request limit middleware");
-
   try {
-    const { hitCount } = await User.incrementHitCountById(req.userId);
-    if (hitCount > MAX_HIT_COUNT) {
+    const { hitCount } = await Keys.getHitCountByKey(res.locals.apiKey);
+    if (hitCount >= REQUEST_LIMIT) {
       return res
-        .status(200)
+        .status(400)
         .json({ message: "Your API usage limit hit the maximum threshold!" });
     }
+    await Keys.incrementHitCountByKey(res.locals.apiKey);
   } catch (err) {
-    return next(err);
+    return res.status(400).json({ message: `${err.message}` });
   }
 
   return next();
