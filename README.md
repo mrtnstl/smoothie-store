@@ -15,4 +15,4 @@ It is built using `model-view-controller` architecture and smoothie requests are
 
 Models
 
-![Models](https://github.com/mrtnstl/smoothie-store/blob/main/docs/models.png "Models")
+![Models and ERD](https://github.com/mrtnstl/smoothie-store/blob/main/docs/models_and_erd.png "Models and ERD")
