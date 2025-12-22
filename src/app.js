@@ -26,6 +26,7 @@ app.set("view engine", "ejs");
   // INSERT TEST API KEY - DELETE THIS WHEN TESTED!
   const { genAPIKey } = require("./utils/apiKeyOps");
   const Keys = require("./models/Keys");
+  const { ROLES } = require("./constants/index");
 
   try {
     const testKey = await genAPIKey(process.env.API_KEY_SECRET);
@@ -35,6 +36,7 @@ app.set("view engine", "ejs");
       ownerId: "usr-1",
       key: testKey,
       isActive: true,
+      role: ROLES.user,
     });
   } catch (err) {
     console.log("ERR DURING TEST KEY GENERATION/INSERTION:", err.message);

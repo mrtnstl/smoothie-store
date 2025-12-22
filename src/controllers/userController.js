@@ -27,10 +27,12 @@ module.exports.registerUser = async (req, res) => {
     return res.status(400).json({ message: err.message });
   }
 };
-module.exports.loginUser = (req, res) => {
+
+module.exports.loginUser = async (req, res) => {
   return res.status(200).json({ message: "to be implemented" });
 };
-module.exports.logoutUser = (req, res) => {
+
+module.exports.logoutUser = async (req, res) => {
   return res.status(200).json({ message: "to be implemented" });
 };
 
@@ -50,6 +52,7 @@ module.exports.requestApiKey = async (req, res) => {
     return res.status(err.status || 500).json({ message: `${err.message}` });
   }
 };
+
 module.exports.revokeApiKey = async (req, res) => {
   try {
     const revokedKey = await Keys.findOneAndUpdate(
@@ -57,7 +60,9 @@ module.exports.revokeApiKey = async (req, res) => {
       { $set: { isActive: false } },
       { new: true }
     );
-    console.log("REVIKED KEY RECORD", revokedKey);
+    if (!revokedKey) {
+      return res.status(404).json({ message: "Key wasn't found!" });
+    }
     return res.status(201).json({ message: `Key revoked successfully!` });
   } catch (err) {
     // TODO: return generic error message to user
@@ -65,6 +70,6 @@ module.exports.revokeApiKey = async (req, res) => {
   }
 };
 
-module.exports.getOwnApiKeys = (req, res) => {
+module.exports.getOwnApiKeys = async (req, res) => {
   return res.status(200).json({ message: "to be implemented" });
 };

@@ -1,6 +1,8 @@
 const { Router } = require("express");
 const userController = require("../controllers/userController");
 const { validateApiKeyMW } = require("../middleware/auth/validateApiKeyMW");
+const { accessControlMW } = require("../middleware/auth/accessControlMW");
+const { ROLES } = require("../constants/index");
 
 const router = Router();
 
@@ -18,7 +20,8 @@ router.post(
 );
 router.post(
   "/revoke-key",
-  /* authMW, accessControlMW(["own", "admin"]) */
+  /* authMW,*/
+  accessControlMW([ROLES.user, ROLES.moderator, ROLES.admin]),
   validateApiKeyMW,
   userController.revokeApiKey
 );
