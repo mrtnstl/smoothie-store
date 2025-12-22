@@ -1,10 +1,17 @@
 const Smoothies = require("../models/Smoothies");
 
 module.exports.getSmoothies = async (req, res) => {
+  const limit = parseInt(req.query.limit) || 4;
+  const page = parseInt(req.query.page) || 1;
+
+  const skip = limit * (page - 1);
+
   const smoothies = await Smoothies.find(
     {},
     { id: true, name: true, description: true, ingredients: true }
-  );
+  )
+    .limit(limit)
+    .skip(skip);
   return res.status(200).json(smoothies);
 };
 

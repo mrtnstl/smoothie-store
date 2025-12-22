@@ -1,7 +1,6 @@
 const { Router } = require("express");
 const smoothieController = require("../controllers/smoothieController");
-const { checkApiKey } = require("../middleware/auth/checkApiKeyMW");
-const { authMW } = require("../middleware/auth/authMW");
+const { validateApiKeyMW } = require("../middleware/auth/validateApiKeyMW");
 const { requestLimiterMW } = require("../middleware/requestLimiterMW");
 
 const router = Router();
@@ -22,7 +21,12 @@ const router = Router();
  *       200:
  *         description: A list of smoothies
  */
-router.get("/smoothies", smoothieController.getSmoothies);
+router.get(
+  "/smoothies",
+  validateApiKeyMW,
+  requestLimiterMW,
+  smoothieController.getSmoothies
+);
 
 /**
  * @swagger
@@ -34,7 +38,12 @@ router.get("/smoothies", smoothieController.getSmoothies);
  *       200:
  *         description: A random smoothie
  */
-router.get("/smoothie/random", smoothieController.getRandomSmoothie);
+router.get(
+  "/smoothie/random",
+  validateApiKeyMW,
+  requestLimiterMW,
+  smoothieController.getRandomSmoothie
+);
 
 /**
  * @swagger
@@ -48,8 +57,7 @@ router.get("/smoothie/random", smoothieController.getRandomSmoothie);
  */
 router.get(
   "/smoothie/:id",
-  authMW,
-  checkApiKey,
+  validateApiKeyMW,
   requestLimiterMW,
   smoothieController.getSmoothieById
 );

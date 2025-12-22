@@ -1,0 +1,4 @@
+const REQUEST_LIMIT = 5;
+const EVICT_CACHE_AFTER = 1000 * 60;
+
+module.exports = { REQUEST_LIMIT, EVICT_CACHE_AFTER };

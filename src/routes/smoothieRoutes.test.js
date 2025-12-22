@@ -1,9 +1,28 @@
 const request = require("supertest");
 const express = require("express");
+const { readFile } = require("node:fs/promises");
 const smoothieRoutes = require("./smoothieRoutes");
-const Smoothies = require("../__mocks__/Smoothies");
+const Smoothies = require("../models/Smoothies");
+const Keys = require("../models/Keys");
 
-beforeAll(() => {});
+beforeAll(() => {
+  // request api key
+
+  (async () => {
+    let SMOOTHIE_SEED;
+    let smoothies;
+    try {
+      SMOOTHIE_SEED = await readFile("./src/data/SMOOTHIE_SEED.json");
+      smoothies = JSON.parse(SMOOTHIE_SEED).smoothies;
+      await Smoothies.insertMany(smoothies);
+    } catch (err) {
+      console.log(err);
+    } finally {
+      SMOOTHIE_SEED = null;
+      smoothies = null;
+    }
+  })();
+});
 
 describe("Smoothie Routes", () => {
   const app = express();
@@ -12,7 +31,16 @@ describe("Smoothie Routes", () => {
 
   describe("GET /smoothies", () => {
     it("should return the list of smoothies when called", async () => {
-      const expected = await Smoothies.findMany();
+      const limit = 4;
+      const page = 1;
+
+      const skip = limit * (page - 1);
+      const expected = await Smoothies.find(
+        {},
+        { id: true, name: true, description: true, ingredients: true }
+      )
+        .limit(limit)
+        .skip(skip);
       const response = await request(app).get("/smoothies");
 
       expect(response.status).toBe(200);
@@ -38,7 +66,7 @@ describe("Smoothie Routes", () => {
   describe("GET /smoothie/:id", () => {
     it("should return the smoothie of the specified ID", async () => {
       const id = "SM-024";
-      const expected = await Smoothies.findOne("id", id);
+      const expected = await Smoothies.findOne({ id: id });
       const response = await request(app).get(`/smoothie/${id}`);
 
       expect(response.status).toBe(200);
@@ -56,4 +84,6 @@ describe("Smoothie Routes", () => {
   });
 });
 
-afterAll(async () => {});
+afterAll(async () => {
+  // delete api key
+});

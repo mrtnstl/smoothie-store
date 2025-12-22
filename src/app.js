@@ -5,6 +5,8 @@ const { initRoutes } = require("./routes/index");
 const Database = require("./services/mongodbMemoryServer");
 const { cleanupAndShutdown } = require("./utils/cleanupAndShutdown");
 
+const { EVICT_CACHE_AFTER } = require("./constants/index");
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -32,6 +34,7 @@ app.set("view engine", "ejs");
     await Keys.insertOne({
       ownerId: "usr-1",
       key: testKey,
+      isActive: true,
     });
   } catch (err) {
     console.log("ERR DURING TEST KEY GENERATION/INSERTION:", err.message);
@@ -48,12 +51,12 @@ initRoutes(app);
 const cacheEvictionTask = cron.schedule(
   "*/5 * * * * *",
   async () => {
-    console.log(`[${new Date().toISOString()}] scheduled task called!`);
-    const deletedItemCount = await ApiAccessCache.evictItemsOlderThan(
-      1000 * 60
-    );
+    const start = Date.now();
+    const deletedItemCount =
+      await ApiAccessCache.evictItemsOlderThan(EVICT_CACHE_AFTER);
+
     console.log(
-      `[${new Date().toISOString()}] scheduled task ended! ${deletedItemCount} item were deleted from api key access cache!`
+      `[${new Date().toISOString()}] scheduled task ended! ${deletedItemCount} item were deleted from api key access cache under ${Date.now() - start} seconds!`
     );
   },
   {
@@ -66,7 +69,6 @@ cacheEvictionTask.on("execution:failed", ctx => {
     `[${new Date().toISOString()}] task failed, id: ${ctx.task?.id}, ${ctx.execution?.error?.message}`
   );
 });
-console.log(cacheEvictionTask.getStatus());
 
 // start server
 const server = app.listen(PORT, () => {
