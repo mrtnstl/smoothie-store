@@ -6,6 +6,7 @@ const keySchema = new Schema(
     ownerId: { type: String, required: true },
     key: { type: String, required: true, unique: true },
     hitCount: { type: Number, default: 0 },
+    isActive: { type: Boolean, required: true },
   },
   {
     timestamps: {
@@ -17,7 +18,7 @@ const keySchema = new Schema(
 keySchema.statics.getHitCountByKey = async function (apiKey) {
   if (!apiKey) throw new Error("apiKey is required!");
 
-  const key = await this.findOne({ key: apiKey });
+  const key = await this.findOne({ key: apiKey, isActive: true });
 
   if (!key) throw new Error("apiKey not found!");
 
@@ -28,7 +29,7 @@ keySchema.statics.incrementHitCountWhereKey = async function (apiKey, value) {
   if (typeof value !== "number") throw new Error("value is not a number!");
 
   const updated = await this.findOneAndUpdate(
-    { key: apiKey },
+    { key: apiKey, isActive: true },
     { $inc: { hitCount: value } },
     { new: true }
   );

@@ -3,7 +3,7 @@
  */
 const Keys = require("../models/Keys");
 const ApiAccessCache = require("../services/inProcessCache");
-const { REQUEST_LIMIT } = require("../constants/apiConstants");
+const { REQUEST_LIMIT } = require("../constants/index");
 
 module.exports.requestLimiterMW = async (req, res, next) => {
   try {
