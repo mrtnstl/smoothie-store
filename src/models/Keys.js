@@ -23,12 +23,13 @@ keySchema.statics.getHitCountByKey = async function (apiKey) {
 
   return { hitCount: key.hitCount };
 };
-keySchema.statics.incrementHitCountByKey = async function (apiKey) {
+keySchema.statics.incrementHitCountWhereKey = async function (apiKey, value) {
   if (!apiKey) throw new Error("apiKey is required!");
+  if (typeof value !== "number") throw new Error("value is not a number!");
 
   const updated = await this.findOneAndUpdate(
     { key: apiKey },
-    { $inc: { hitCount: 1 } },
+    { $inc: { hitCount: value } },
     { new: true }
   );
 

@@ -1,17 +1,23 @@
 const Smoothies = require("../models/Smoothies");
 
 module.exports.getSmoothies = async (req, res) => {
-  const smoothies = await Smoothies.findMany();
+  const smoothies = await Smoothies.find(
+    {},
+    { id: true, name: true, description: true, ingredients: true }
+  );
   return res.status(200).json(smoothies);
 };
 
 module.exports.getRandomSmoothie = async (req, res) => {
-  const maxCount = await Smoothies.count();
+  const maxCount = await Smoothies.countDocuments();
   const pseudoRandom = String(Math.floor(Math.random() * maxCount + 1));
 
   const smoothieId = `SM-${pseudoRandom.padStart(3, "0")}`;
 
-  const randomSmoothie = await Smoothies.findOne("id", smoothieId);
+  const randomSmoothie = await Smoothies.findOne(
+    { id: smoothieId },
+    { id: true, name: true, description: true, ingredients: true }
+  );
   if (!randomSmoothie) {
     return res
       .status(404)

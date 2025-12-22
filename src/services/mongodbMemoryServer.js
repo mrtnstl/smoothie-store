@@ -9,13 +9,15 @@ async function connectDB() {
   await mongoose.connect(mongoUri, {
     dbName: "SmoothiesDB",
   });
-  console.log("Connect to mongodb memory server");
+  console.log(`[${new Date().toISOString()}] Connect to mongodb memory server`);
 }
 
 async function disconnectDB() {
   await mongoose.disconnect();
   await mongoServer.stop();
-  console.log("Disconnect from mongodb memory server");
+  console.log(
+    `[${new Date().toISOString()}] Disconnect from mongodb memory server`
+  );
 }
 
 module.exports = { connectDB, disconnectDB };
