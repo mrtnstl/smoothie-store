@@ -1,15 +1,14 @@
 <%- include("partials/header") -%>
-
 <main>
     <form>
-        <h2>Log in</h2>
+        <h2>Sign Up</h2>
         <label for="email">email</label>
         <input type="text" name="email" id="email" required>
         <div class="email error"></div>
         <label for="password">password</label>
         <input type="password" name="password" id="password" required>
         <div class="password error"></div>
-        <button>Log in</button>
+        <button>Sign up</button>
     </form>
 </main>
 
@@ -25,5 +24,4 @@
         console.log(email, password)
     })
 </script>
-
 <%- include("partials/footer") -%>

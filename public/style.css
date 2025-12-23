@@ -1,9 +1,40 @@
-body {
-  background-color: rgb(124, 0, 0);
-  color: wheat;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  --color-primary: rgb(239, 223, 192);
+  --color-secondary: rgb(80, 44, 180);
+  --color-accent: rgb(245, 183, 70);
 }
 
+body {
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+body>*:first-child,
+body>*:last-child {}
+
+body>*:nth-child(2) {
+  flex: auto;
+}
+
+h1 {}
+
+h2 {}
+
+h3 {}
+
+p {}
+
+li {}
+
 a {
-  color: rgb(255, 177, 33);
+  color: var(--color-accent);
   text-decoration: none;
 }
