@@ -4,7 +4,12 @@ module.exports.authMW = (req, res, next) => {
   if (!apiKey) {
     return res.status(401).json({ message: "Missing or invalid API key!" });
   }
-
-  req.userId = "usr-1";
+  req.user = {
+    id: "some-usr-253",
+    name: "Luigi",
+    email: "lou@mail.email",
+    role: "user",
+  };
+  //req.userId = "usr-1";
   return next();
 };

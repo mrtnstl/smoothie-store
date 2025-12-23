@@ -5,7 +5,7 @@ const { initRoutes } = require("./routes/index");
 const Database = require("./services/mongodbMemoryServer");
 const { cleanupAndShutdown } = require("./utils/cleanupAndShutdown");
 
-const { EVICT_CACHE_AFTER } = require("./constants/index");
+const { EVICT_CACHE_AFTER, ROLES } = require("./constants/index");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -14,6 +14,7 @@ app.use(express.static("public"));
 app.use(express.json());
 
 app.set("view engine", "ejs");
+app.set("views", "./src/views");
 
 // connect to database
 (async () => {
@@ -26,7 +27,6 @@ app.set("view engine", "ejs");
   // INSERT TEST API KEY - DELETE THIS WHEN TESTED!
   const { genAPIKey } = require("./utils/apiKeyOps");
   const Keys = require("./models/Keys");
-  const { ROLES } = require("./constants/index");
 
   try {
     const testKey = await genAPIKey(process.env.API_KEY_SECRET);

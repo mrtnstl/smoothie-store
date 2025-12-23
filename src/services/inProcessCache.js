@@ -62,7 +62,7 @@ class InProcessCache {
 }
 
 /**
- * datastore sample
+ * datastore example
  *
  * {
  *    [someKey]: {value: 0, cachedAt: 1766390595957 },
@@ -76,15 +76,3 @@ class InProcessCache {
 const ApiAccessCache = new InProcessCache();
 
 module.exports = ApiAccessCache;
-
-(async () => {
-  try {
-    //console.log(AccessCache.getItem("nonexistentitem"));
-    //ApiAccessCache.setItem("mykey", { hitCount: 4 }); <- bugy
-    //console.log(await ApiAccessCache.getItem("mykey"));
-    //AccessCache.clearItem("mykey");
-    //console.log(AccessCache.getItem("mykey"));
-  } catch (err) {
-    console.log("CacheError:", err.message);
-  }
-})();

@@ -1,24 +1,24 @@
 const swaggerUi = require("swagger-ui-express");
 const swaggerJSDoc = require("swagger-jsdoc");
 const { swaggerOptions } = require("../config/swagger");
+const swaggerDocs = swaggerJSDoc(swaggerOptions);
 
 const smoothieRoutes = require("./smoothieRoutes");
-const userRoutes = require("./userRoutes");
+const apikeyRoutes = require("./apikeyRoutes");
+const webpageRoutes = require("./webpageRoutes");
+
 const { wildcardMW } = require("../middleware/wildcardMW");
 const { globalErrorHandlerMW } = require("../middleware/globalErrorHandlerMW");
-
-const swaggerDocs = swaggerJSDoc(swaggerOptions);
+const corsMW = require("../middleware/corsMW");
 
 module.exports.initRoutes = app => {
   // website routes
-  app.get("/", (req, res) => {
-    res.render("home");
-  });
+  app.use(webpageRoutes);
   app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
   // api routes
-  app.use("/api/v1", smoothieRoutes);
-  app.use("/api/v1", userRoutes);
+  app.use("/api/v1", corsMW, smoothieRoutes);
+  app.use("/api/v1", apikeyRoutes);
 
   // catchall
   app.use(wildcardMW);

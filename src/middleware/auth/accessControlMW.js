@@ -1,6 +1,9 @@
 module.exports.accessControlMW = allowedRolesArray => {
-  return (req, res, next) => {
-    console.log("accessControlMW", "allowed roles:", allowedRolesArray.join());
+  return async (req, res, next) => {
+    if (!allowedRolesArray.includes(req.user.role)) {
+      return res.status(201).json({ message: "Unauthorized request!" });
+    }
+
     return next();
   };
 };
